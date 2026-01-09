@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <title>REGRET — Psychological Co-op Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <!-- Google tag -->
+  <!-- Google tag (замінити ID) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -14,52 +15,115 @@
   </script>
 
   <style>
+    :root {
+      --bg: #d73327;
+      --btn: #0b0b0b;
+      --btn-hover: #1a1a1a;
+      --text: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      background: #0b0b0b;
-      color: #fff;
-      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+      padding: 24px;
       text-align: center;
     }
-    .box {
-      max-width: 720px;
-      padding: 20px;
+
+    .logo {
+      width: 200px;
+      margin: 0 auto 24px auto;
+      display: block;
     }
-    video {
+
+    .video-wrapper {
+      position: relative;
       width: 100%;
-      border-radius: 12px;
+      padding-top: 56.25%; /* 16:9 */
+      background: #000;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.35);
     }
-    .btn {
-      margin-top: 20px;
-      padding: 16px 28px;
-      background: #e50914;
-      color: white;
-      font-size: 18px;
-      text-decoration: none;
-      border-radius: 8px;
+
+    .video-wrapper video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .cta {
+      margin-top: 28px;
+    }
+
+    .cta a {
       display: inline-block;
+      background: var(--btn);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: bold;
+      padding: 18px 34px;
+      border-radius: 10px;
+      transition: background 0.2s ease, transform 0.1s ease;
+    }
+
+    .cta a:hover {
+      background: var(--btn-hover);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 600px) {
+      .logo {
+        width: 160px;
+      }
+
+      .cta a {
+        font-size: 18px;
+        padding: 16px 28px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div class="box">
-    <video autoplay muted loop playsinline>
-      <source src="trailer.mp4" type="video/mp4">
-    </video>
+  <div class="container">
 
-    <h1>ONE MISTAKE — YOU'RE OUT</h1>
-    <p>4-player psychological elimination game.</p>
+    <!-- LOGO -->
+    <img src="logo.png" alt="REGRET Logo" class="logo" />
 
-    <a class="btn"
-       href="https://store.steampowered.com/app/XXXXX/?utm_source=landing&utm_medium=ads&utm_campaign=nextfest"
-       onclick="gtag('event', 'conversion', {'send_to': 'AW-XXXXXXXXX/STEAM_CLICK'});">
-       Wishlist on Steam
-    </a>
+    <!-- TRAILER SLOT -->
+    <div class="video-wrapper">
+      <video autoplay muted loop playsinline>
+        <source src="trailer.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <!-- CTA BUTTON -->
+    <div class="cta">
+      <a href="https://store.steampowered.com/app/XXXXX/?utm_source=landing&utm_medium=ads&utm_campaign=nextfest"
+         onclick="gtag('event', 'conversion', {'send_to': 'AW-XXXXXXXXX/STEAM_CLICK'});">
+        WISHLIST ON STEAM
+      </a>
+    </div>
+
   </div>
 </body>
 </html>
